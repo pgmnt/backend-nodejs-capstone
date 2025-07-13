@@ -1,20 +1,20 @@
-# Use Node.js 18 LTS (recommended for Express 5)
-FROM node:18-slim
+# Use Node.js LTS version
+FROM node:18
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json files
 COPY package*.json ./
 
-# Install only production dependencies
+# Install dependencies
 RUN npm install --production
 
-# Copy everything else (including build folder)
+# Copy application code
 COPY . .
 
-# Expose port 9000
+# Expose port (if needed)
 EXPOSE 9000
 
-# Start the Express server
+# Run the application
 CMD ["node", "index.js"]

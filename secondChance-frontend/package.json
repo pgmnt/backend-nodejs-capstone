@@ -23,7 +23,6 @@
     "postbuild": "cp -r build ../secondchancewebsite/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
