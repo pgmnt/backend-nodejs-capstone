@@ -1,9 +1,9 @@
 name: 'CI/CD'
 on:
   push:
-    branches: [master, main, linter]
+    branches: [linter]
   pull_request:
-    branches: [master, main, linter]
+    branches: [linter]
 jobs:
   lint_js:
       name: Lint JavaScript Files
