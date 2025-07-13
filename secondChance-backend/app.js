@@ -6,11 +6,14 @@ const pinoLogger = require('./logger');
 
 const connectToDatabase = require('./models/db');
 const {loadData} = require("./util/import-mongo/index");
+const path = require('path');
 
 
 const app = express();
 app.use("*",cors());
-const port = 3060;
+const port = 3061
+
+;
 
 // Connect to MongoDB; we just do this one time
 connectToDatabase().then(() => {
@@ -37,6 +40,8 @@ const pinoHttp = require('pino-http');
 const logger = require('./logger');
 
 app.use(pinoHttp({ logger }));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const searchRoutes = require('./routes/searchRoutes')
 const authRoutes = require('./routes/authRoutes')

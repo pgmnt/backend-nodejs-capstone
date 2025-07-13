@@ -34,6 +34,7 @@ function SearchPage() {
 
     const handleSearch = async () => {
         // Construct the search URL based on user input
+        console.log('Search button clicked');
         const baseUrl = `${urlConfig.backendUrl}/api/secondchance/search?`;
         const queryParams = new URLSearchParams({
             name: searchQuery,
@@ -44,6 +45,7 @@ function SearchPage() {
 
         try {
             const response = await fetch(`${baseUrl}${queryParams}`);
+            console.log(`${baseUrl}${queryParams}`);
             if (!response.ok) {
                 throw new Error('Search failed');
             }
@@ -118,7 +120,9 @@ function SearchPage() {
                                     <img src={urlConfig.backendUrl+product.image} alt={product.name} className="card-img-top" />
                                     <div className="card-body">
                                         <h5 className="card-title">{product.name}</h5>
-                                        <p className="card-text">{product.description.slice(0, 100)}...</p>
+                                        <p className="card-text">
+                                        {product.description ? `${product.description.slice(0, 100)}...` : 'No description available.'}
+                                        </p>                                   
                                     </div>
                                     <div className="card-footer">
                                         <button onClick={() => goToDetailsPage(product.id)} className="btn btn-primary">
